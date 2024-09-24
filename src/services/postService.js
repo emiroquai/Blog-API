@@ -1,13 +1,22 @@
 const prisma = require("../config/prisma");
 
 const getAllPosts = async () => {
-  return await prisma.post.findMany();
+  return await prisma.post.findMany({
+    include: {
+      author: true,
+      Comments: true,
+    },
+  });
 };
 
 const getAllPublishedPosts = async () => {
   return await prisma.post.findMany({
     where: {
       isPublished: true,
+    },
+    include: {
+      author: true,
+      Comments: true,
     },
   });
 };
@@ -16,6 +25,10 @@ const getAllUnpublishedPosts = async () => {
   return await prisma.post.findMany({
     where: {
       isPublished: false,
+    },
+    include: {
+      author: true,
+      Comments: true,
     },
   });
 };

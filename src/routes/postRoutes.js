@@ -8,6 +8,11 @@ const {
   updatePost,
   deletePost,
 } = require("../controllers/postController");
+const {
+  createComment,
+  deleteComment,
+} = require("../controllers/commentController");
+
 const router = Router();
 
 router.get("/all", getAllPublishedPosts);
@@ -17,5 +22,8 @@ router.get("/:id", getPostById);
 router.post("/", createPost);
 router.put("/:id", updatePost);
 router.delete("/:id", deletePost);
+
+router.post("/:postId/comments", createComment);
+router.delete("/:postId/comments/:commentId", deleteComment);
 
 module.exports = router;

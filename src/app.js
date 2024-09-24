@@ -14,7 +14,6 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
-app.use("/api/comments", commentRoutes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, "0.0.0.0", () =>
